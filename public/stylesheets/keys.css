@@ -1,0 +1,40 @@
+.key-container{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #563D7C;
+    font-size: 0.6em;
+    /* background: red; */
+}
+
+/* Fondos para el tipo de llave SEGUN tipo_llave en la BD*/
+.rack,.jaula{
+    background: #04B431;
+    color:#fff;
+}
+.edificio,
+.edificioPA{
+    background: #424242;
+    color: #fff;
+}
+  
+.rackPA{
+    background: #F7D358;
+    color: #fff;
+}
+.otros{background: #F2F2F2;}
+/* FIN DE ESTILOS DE LLAVES */
+
+.libre{
+    /* color: #000; */
+    /* background: rgba(4, 180, 49, 0.3); */
+    opacity: 0.55;
+}
+.keys{width: 100%;}
+.div-100{width: 100%;}
+.div-20{width: 30%;}
+.div-btns{width: 50%;}
+.keys h6{font-size: 1.4em;}
+.capitalized{text-transform: capitalize;}
+.borleft{border-left: 1px solid #E6E6E6;}
+.bordown{border-bottom: 1px solid #E6E6E6;}
+.bordup{border-top: 1px solid #E6E6E6;}

@@ -1,0 +1,277 @@
+body {
+  background-image: url(/images/light-grey-terrazzo.png);
+  /* background-image: url(/images/doodles.png); */
+  /* background-color: #D8D8D8; */
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.colorcwb {background:  #563D7C;}
+
+.key-header{
+  height: 30px;
+  padding: 0.9px;
+}
+
+/* ESTILOS DEL CONTENEDOR DE LOS BOTONES EDIT,DELETE,LIMPIAR */
+.btn-container{
+  width: 25%;
+}
+
+.key-btns{
+  background: none;
+  padding: 2px;
+  padding-right: 10px;
+  font-size: 1em;
+}
+
+.btn-red{color: red;}
+.btn-green{color:#74DF00;}
+.btn-yell{color:#FFBF00;}
+.btn-blue{color:#0174DF;}
+
+/* .pb-header-background{background: #9BC53D;} */
+/* .pa-header-background{background: #08298A;} */
+
+/* .pa-header-background{background: #E55934;} */
+/* .pb-header-background{background: #088A4B;} */
+
+/* ESTILOS PARA EL PANEL AÑADIR RACK EN JAULA */
+.forms{
+  display: none;
+  position: fixed;
+  background: #D8D8D8;
+  border-radius: 0 0 10px;
+  border: 1px solid #fff;
+  z-index: 99;
+  min-width: 300px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rack-form-panel{
+  width: 20%;
+  text-align: center;
+}
+
+.form-panel {
+  width: 35%;
+  font-size: 0.9em;
+  box-shadow: 1px 7px 8px #888888;
+}
+
+.h6-update-key{
+  text-align: center;
+  color: #FF8000;
+}
+
+.edit-color{
+  color: #FF8000;
+}
+
+.inp-edit-codigo{
+  background: #E6E6E6;
+  pointer-events: none;
+}
+
+.div-release{
+  width: 100%;
+  text-align: center;
+}
+
+.btn-form-keyrelease{
+  width: 60%;
+  background: none;
+  color: #424242;
+  border: 3px dashed #FF8000;
+}
+.btn-form-keyrelease:hover{
+  background: #E6E6E6;
+  cursor: pointer;
+}
+
+.close-form-panel{
+  width: 100%;
+  background: #A4A4A4;
+  border-bottom: 1px solid #fff;
+  padding: 1px;
+}
+.btn-close-form-panel{
+  border:none;
+  /* border: 1px solid #fff; */
+  margin-right: 1px;
+  color: #424242;
+  background: #E6E6E6;
+  cursor: pointer;
+}
+.btn-close-form-panel:hover{color: #FF0000;}
+.client-div {background: #E6E6E6;}
+.full-width {width: 100%;}
+.key-body {
+  font-size: 0.75em;
+}
+.key-body label{
+  font-weight: bold;
+}
+
+/* ESTILO PARA LOS RACKS EN JAULA */
+.rj-contenido{
+  border: 1px solid #fff;
+  margin: 0 1px 0 1px;
+  width: 100%;
+  background: red;
+}
+/* .rj-portanombre{padding: 1px;} */
+.rj-portanombre a{
+  color: #585858;
+  height: 100%;
+  padding: 5px;
+  padding-top: 25%;
+  text-decoration: none;
+  background-color: #D8D8D8;
+}
+.rj-portanombre a:hover{
+  background: #fff;
+}
+.rj-portabtn button{
+  padding: 0.5px;
+  font-size: 0.8em;
+  border: 1px solid #A4A4A4;
+}
+
+/* ESTILOS PARA LOS DIVS CONTENIDO DE LA KEY */
+.contenido-codigo,
+.contenido-creado{
+  width: 25%;
+}
+
+.contenido-nombre{
+  width: 50%;
+}
+
+/* ESTILO DEL PARRAFO QUE CONTIENE LA UBICACION PA O PB */
+.key-posicion{
+  font-weight: bold;
+  text-transform: capitalize;
+  width: 50%;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+/* ESTILO DE LAS KEY CARDS */
+.key-card{
+  width: 100%;
+}
+
+.div-racks-en-jaula{
+  background: #088A29;
+  border-radius: 4px;
+}
+
+.btn-add-rack{
+  background: none;
+  border: none;
+  color: #424242;
+  font-size: 1em;
+}
+.btn-add-rack:hover{
+  cursor: pointer;
+  color:#fff;
+}
+
+.inputs-keys-styles{
+  text-transform: capitalize;
+  pointer-events: none;
+  background: none;
+  text-align: center;
+  color:#424242;
+  border: none;
+}
+.input-nom-width{
+  width: 25%;
+}
+
+.info-destacada{
+  /* color:#FF8000; */
+  color: #FAAC58;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+/* COLOR DEL TEXTO DEL INPUT NOMBRE DEL CLIENTE */
+.nombre-cliente{color: #A9D0F5;}
+
+.edit-keys{
+  pointer-events: all;
+  border: 1px solid #848484;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* background-color: #045FB4; */
+  background-color: #2E2E2E;
+}
+.footer span {
+  color: #fff;
+  font-size: 9px;
+}
+
+.btn-fixed{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 98;
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+
+.btn-nuevo{
+  background-color: #045FB4;
+  
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  /* box-shadow:  3px 3px 5px rgba(0, 0, 0, 0.6);  */
+}
+.btn-nuevo:hover{
+  color: #BDBDBD;
+}
+
+.btn-disabled{
+  border: 3px dashed #FFBF00;
+  background-color: rgba(255, 255, 255, .1);
+  color: #E6E6E6;
+  /* cursor: pointer; */
+  padding: 15px;
+  border-radius: 4px;
+}
+
+/* DIV ALERT */
+.div-alert{
+  text-align: center;
+  /* font-weight: bold; */
+  position: fixed;
+  display: none;
+  bottom: 30px;
+  left: 30px;
+  z-index: 98;
+  width: 15%;
+  /* height: 75px; */
+  padding: 10px;
+  box-shadow: 1px 2px 5px #888888;
+  background: #fff;
+  border: 2px dashed orange;
+  font-size: 1em;
+
+}
+
+/* TEST DE BACKGROUNDS PARA LAS SECCIONES QUE CONTENDRAN LAS LLAVES */
+.main-bg {background: #9AFE2E;}
+.bg1{background: blue;}
+.bg2{background: red;}
+.bg3{background: orange;}

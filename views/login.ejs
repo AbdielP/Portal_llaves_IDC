@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% include partials/header.ejs %>
+    <title><%= title %></title>
+</head>
+<body class="text-center">
+
+    <div class="container d-flex h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+          <div class="inner">
+            <h3 class="masthead-brand"><i class="fas fa-key"></i> IDC Keys.</h3>
+            <nav class="nav nav-masthead justify-content-center">
+              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Contact</a>
+            </nav>
+          </div>
+        </header>
+  
+        <main role="main" class="inner cover">
+            <form class="form-signin" action="/login" method="post">
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+                    <p>Control de llaves y gabinetes del IDC de <a href="">Panamá Pacifico</a> y <a href="">Balboa.</a></p>
+                </div>
+
+                <% if(message.length > 0) { %>
+                    <div class="alert alert-danger">
+                        <%= message %>
+                    </div>
+                <% }%>
+                  
+                <div class="form-label-group">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required autofocus>
+                    <label for="username">Usuario</label>
+                </div>
+                  
+                <div class="form-label-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <label for="password">Password</label>
+                </div>
+                  
+                <div class="checkbox mb-3">
+                    <p class="text-muted"><small>Si no posee acceso o autorización a este sitio, abandonelo inmediatamente.</small>
+                    <hr>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
+                <p class="mt-5 mb-3 text-muted text-center">Cable & Wireless International Data Center - 2018 &copy;</p>
+            </form>
+        </main>
+  
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+            <p>Inicio de Sesión <a href="">IDC Keys</a>. Soporte: <a href="">abdiel.pinzon@cwpanama.com</a>.</p>
+          </div>
+        </footer>
+      </div>
+  
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include partials/header.ejs %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg header-styles">
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <img class="logo" src="/images/cwb.png" alt="IDC Keys">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <% if(idc == 'howard') { %>
+                  <a class="nav-link activo" id="links-idc" href="/">IDC Panamá Pacifico <span class="sr-only"></span></a>
+                 <% }else { %>
+                  <a class="nav-link" id="links-idc" href="/">IDC Panamá Pacifico <span class="sr-only"></span></a>
+                 <%}%>
+            </li>
+            <li class="nav-item">
+                <% if(idc == 'balboa') { %>
+                  <a class="nav-link activo" id="links-idc" href="/balboa">IDC Balboa</a>
+                 <% }else { %>
+                  <a class="nav-link" id="links-idc" href="/balboa">IDC Balboa</a>
+                 <%}%>
+            </li>
+          </ul>
+          <div class="d-flex justify-content-between flex-nowrap div-search">
+            <div class="d-flex flex-row justify-content-around search-container">
+              <input type="text" class="input-search" id="input-search" placeholder="Buscar..">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+            <!-- <% if(user != '' > 0) { %>
+              <small>Sesión iniciada como <%= user %></small> 
+              <a href="/logout">Cerrar sesión.</a> 
+            <% }else { %>
+              <a href="/login">Iniciar sesión.</a>
+            <%}%> -->
+      </div>
+    </nav>
+
+    <main role="main" class="container-fluid" id="main">
+
+      <div class="row">
+        <div class="col-sm mt-0 p-2">
+
+          <div class="card text-center full-width ">
+            <div class="card-header pb-header-background">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="">Planta Baja</a>
+                </li>
+              </ul>
+          </div>
+
+          <div class="card-body d-flex flex-wrap p-1 contenedor-llaves" id="contenedor-planta-baja">
+            <!-- TARJETAS DE CLIENTES DE PB AQUÍ.. -->
+          </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm mt-0 p-2">
+          <div class="card text-center full-width">
+            <div class="card-header pa-header-background">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="">Planta Alta</a>
+                </li>
+              </ul>
+          </div>
+          <!-- <div class="card-body d-flex justify-content-between flex-wrap p-0 contenedor-llaves" id="contenedor-planta-alta">  -->
+          <div class="card-body d-flex flex-wrap p-1 contenedor-llaves" id="contenedor-planta-alta">
+            <!-- TARJETA DE RACK DE CLIENTE PA-->
+ 
+          </div>
+          </div>
+        </div>
+
+      </div>
+    
+    </main><!-- /.container -->
+
+    <!-- DIV FORMULARIO -->
+    <div class="m-0 p-0 col-sm forms form-panel" id="form-panel">
+      <!-- DIV PARA CERRAR EL PANEL DEL FORM -->
+      <div class="close-form-panel d-flex justify-content-end">
+        <button class="btn-close-form-panel" id="btn-close-form-panel" title="Cerrar panel"><i class="far fa-window-close "></i></button>
+      </div>
+      <div class="p-3">
+        <form class="needs-validation" id="form-addkey" action="/users/addkey" method="POST">
+          <fieldset >
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="tipo_llave">Tipo de Llave</label>
+              <% if(idc == 'howard') { %>
+                <select class="custom-select d-block w-100" id="tipo_llave" name="tipo_llave" onchange="HideInputs()" required> <!-- select tipo_llave -->
+              <% }else { %>
+                <select class="custom-select d-block w-100" id="tipo_llave" name="tipo_llave" required> <!-- select tipo_llave -->
+              <%}%>
+                  <option value="" selected>Seleccionar...</option>
+                  <option>Rack</option>
+                <% if(idc == 'howard') { %>
+                  <option id="jaula-option">Jaula</option>
+                <% }else { %>
+                  <option>Jaula</option>
+                <%}%>
+                  <option>Edificio</option>
+                  <option>Otros</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="codigo">Código de llave</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <input type="text" class="password form-control" id="codigo" name="codigo" placeholder="" value="" disabled> <!-- codigo -->
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="ubicacion">Ubicación</label>
+                <% if(idc == 'howard') { %>
+                    <select class="custom-select d-block w-100" id="ubicacion" name="ubicacion" onchange="SetKeyCode()" required> <!-- select ubicacion -->
+                 <% }else { %>
+                    <select class="custom-select d-block w-100" id="ubicacion" name="ubicacion" onchange="SetKeyCodeBal()" required> <!-- select ubicacion -->
+                 <%}%>
+                  <option value="">Seleccionar...</option>
+                  <option>Planta Baja</option>
+                  <option id="pa-option">Planta Alta</option>
+                </select>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="nombre">Posición de la llave:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ejemplo: A-1" value=""  required> <!-- nombre llave -->
+                <small id="cliente" class="form-text text-muted pt-1">Ejemplo: A-1, Cuarto eléctrico, oficina de especialistas.
+                  <!-- <ul>
+                    <li>A-1</li>
+                    <li>Cuarto eléctrico 1</li>
+                    <li>Llave oficina de especialistas</li>
+                  </ul> -->
+                </small>
+              </div>
+            </div>
+
+            <hr class="mt-0">
+
+            <div class="mb-3" id="div-input-cliente">
+              <div class="d-flex justify-content-between">
+                <label for="cliente">Descripción: (Opcional)</label>
+                <div>
+                  <input type="checkbox" id="checklibre" name="libre" value="" onclick="CheckLibre()">
+                  <label for="checklibre">Marcar como 'Libre'</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                </div>
+                <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Ejemplo: Banco Ejemplo"> <!-- cliente -->
+              </div>
+              <small id="cliente" class="form-text text-muted pt-1">Nombre del cliente o ubicación de esta llave en el IDC. Puede ser editado más tarde.
+              </small>
+            </div>
+
+            <!-- hidden -->
+            <input type="hidden" id="fecha" name="fecha" value="">
+          </fieldset>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="btn-add-users">Crear</button>
+        
+        </form>
+      </div>
+    </div> 
+    <!-- FINAL DEL FORM NUEVA LLAVE -->
+
+    <!-- FORM AÑADIR RACK EN LA JAULA -->
+    <div class="m-0 p-1 col-sm forms rack-form-panel" id="rack-form-panel">
+      <!-- DIV PARA CERRAR EL PANEL DEL FORM -->
+      <div class="close-form-panel d-flex justify-content-end">
+        <button class="btn-close-form-panel" id="btn-close-rack-panel" title="Cerrar panel"><i class="far fa-window-close "></i></button>
+      </div>
+      <p class="m-0"><small><i class="fas fa-server p-1"></i> Agregar Rack:</small></p>
+      <hr class="m-1">
+
+      <form class="needs-validation" id="form-addrj" action="" method="POST">
+        <div class="input-group mb-1">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+          </div>
+          <input type="text" class="form-control" id="rjcodigo" name="rjcodigo" placeholder="Codigo de llave" aria-label="Codigo de llave" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-1">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-signature"></i></span>
+          </div>
+          <input type="text" class="form-control" id="rjnombre" name="rjnombre" placeholder="Nombre de llave" aria-label="Nombre de llave" aria-describedby="basic-addon1" required>
+          <input type="hidden" id="rjid" name="_id" rel="">
+        </div>
+        <button type="submit" class="full-width btn btn-outline-light" id="btn-addrj" rel="">Añadir rack</button>
+      </form>
+      
+    </div>
+    <!-- FINAL DEL FORM AÑADIR RACK EN JAULA -->
+    
+    <!-- DIV PARA EDITAR LA LLAVE -->
+    <div class="m-0 p-0 col-sm forms form-panel" id="edit-keys-panel">
+      <div class="close-form-panel d-flex justify-content-end">
+        <button class="btn-close-form-panel" id="btn-close-edit-panel" title="Cerrar panel"><i class="far fa-window-close "></i></button>
+      </div>
+      <div class="p-3">
+        <h6 class="h6-update-key"><small>Actualizar Llave</small></h6>
+        <hr>
+        <!-- <button type="button" class="btn key-btns" id="" title="Liberar rack"><i class="fas fa-broom btn-yell"></i></button> -->
+        <div class="d-flex flex-column justify-content-center div-release">
+          <button type="submit" class="align-self-center p-2 pl-5 pr-5 btn-form-keyrelease"  id="btn-form-keyrelease"  title="Presione aquí para colocar esta llave como 'Libre'"><i class="fas fa-broom btn-yell"></i> Liberar llave</button>
+          <label for="btn-form-keyrelease"><small id="cliente" class="form-text text-muted">Presione aquí para colocar esta llave como 'Libre'.</small></label>
+        </div>
+        <hr class="p-0 pb-1 m-0">
+
+        <form class="needs-validation" id="form-update-keys" action="/users/updatekey" method="POST">
+          <fieldset >
+            <div class="row">
+              <div class="col-md-6">
+                <label for="edit_tipo_llave">Tipo de Llave</label>
+                <select class="custom-select d-block w-100 edit-color" id="edit_tipo_llave" name="tipo_llave" onchange="HideInputs()" required> <!-- Update tipo_llave -->
+                  <option value="" selected>Seleccionar...</option>
+                  <option>Rack</option>
+                <% if(idc == 'howard') { %>
+                  <option id="edit-jaula-option">Jaula</option>
+                <% }else { %>
+                  <option>Jaula</option>
+                <%}%>
+                  <option>Edificio</option>
+                  <option>Otros</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="edit-codigo">Código de llave</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <input type="text" class="inp-edit-codigo form-control " id="edit-codigo" name="codigo" placeholder="" value="" disabled> <!-- codigo -->
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              
+              <div class="col-md-6">
+                <label for="edit-nombre">Posición de la llave:</label>
+                <input type="text" class="form-control edit-color" id="edit-nombre" name="nombre" placeholder="Ejemplo: A-1" value=""  required> <!-- nombre llave -->
+                <small id="cliente" class="form-text text-muted pt-1">Ejemplo: A-1, Cuarto eléctrico, oficina de especialistas.</small>
+              </div>
+
+              <div class="col-md-6">
+                  <label for="edit-cliente">Descripción: (Opcional)</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                    </div>
+                    <input type="text" class="form-control edit-color" id="edit-cliente" name="cliente" placeholder="Ejemplo: Banco Ejemplo"> <!-- cliente -->
+                  </div>
+                  <small id="cliente" class="form-text text-muted pt-1">Nombre del cliente o ubicación de esta llave en el IDC. Puede ser editado más tarde.
+                  </small>
+              </div>
+
+            </div>
+
+            <hr class="mt-0">
+
+            <!-- hidden -->
+            <input type="hidden" id="update-id" name="" value="">
+            <input type="hidden" id="fecha" name="fecha" value="">
+          </fieldset>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="btn-update-keys" rel="">Actualizar</button>
+        
+        </form>
+      </div>
+    </div>
+
+    <div class="alert div-alert" role="alert" id="div-alert"></div>
+    <button class="btn-fixed btn-nuevo" id="btn-nuevo" title="Crear Llave">Nuevo</button>
+    <!-- <% if(user != '' > 0) { %> -->
+      <!-- <button class="btn-fixed btn-nuevo" id="btn-nuevo" title="Crear Llave">Nuevo</button> -->
+    <!-- <% }else { %>
+      <button class="btn-fixed btn-disabled" id="btn-nuevo" title="Inicie sesión para editar el documento." disabled>Nuevo</button>
+    <%}%> -->
+
+    <footer class="footer">
+      <div class="container d-flex justify-content-center">
+        <span>Cable & Wireless International Data Center - <span id="span_year"></span> &copy;.</span>
+      </div>
+    </footer>
+  <% if(idc == 'howard') { %>
+   <% include partials/bscripts.ejs %>
+  <% }else { %>
+    <% include partials/bscripts_balboa.ejs %>
+  <%}%>
+  </body>
+</html>
