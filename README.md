@@ -14,4 +14,13 @@
 # PORTAL DE LLAVES IDC
 ## Imágenes
 **Dashboard principal**
-<img src="public/images/img_readme/dashboard.png" alt="" width="100%">
+
+<img src="public/images/img_readme/dashboard.PNG" alt="" width="49%"> <img src="public/images/img_readme/dashboard2.PNG" alt="" width="49%">
+_______
+**Función de busqueda**
+Busqueda rápida indexada. filtra las llaves según los caracteres introducidos en el campo de busqueda.
+<img src="public/images/img_readme/busqueda.PNG" alt="" width="100%">
+_______
+**Añadir nuevas llaves**
+Permite agregar nuevas llaves, asignando un código único a las mismas.
+<img src="public/images/img_readme/crear.PNG" alt="" width="40%">
