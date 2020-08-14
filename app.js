@@ -75,6 +75,3 @@ module.exports = app;
 /*Iniciar proyecto desde la ruta del proyecto con el comando:
   npm start
 */
-
-/*La base de datos en el servidor 172.18.227.82:3000 No está identificada donde se guarda..
-*/
